@@ -38,14 +38,14 @@
                 <div class="hidden sm:block">
                     <div class="bg-white/10 flex items-center p-1  h-[50px] rounded-full border border-white/10">
                         <div class="">
+                            <a href="/"
+                                class="px-6 py-3 sm:py-2 rounded-full transition ease-out hover:bg-white/10 active:scale-95">Home</a>
+                            <a href="/store"
+                                class="px-6 py-3 sm:py-2 rounded-full transition ease-out hover:bg-white/10 active:scale-95">Store</a>
                             <a href=""
-                                class="px-6 py-3 sm:py-2 rounded-full transition ease-out hover:bg-white/10 active:scale-95 bg-white/10">Home</a>
-                            <a href=""
-                                class="px-6 py-3 sm:py-2 rounded-full transition ease-out hover:bg-white/10 active:scale-95 ">Store</a>
-                            <a href=""
-                                class="px-6 py-3 sm:py-2 rounded-full transition ease-out hover:bg-white/10 active:scale-95 ">Topup</a>
-                            <a href="" class="text-black font-semibold bg-white px-6 p-2 rounded-full">Join
-                                Discord</a>
+                                class="px-6 py-3 sm:py-2 rounded-full transition ease-out hover:bg-white/10 active:scale-95">Topup</a>
+                            <a href="" class="text-black font-semibold bg-white px-6 p-2 rounded-full">
+                                Join Discord</a>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                 <!-- Login -->
                 <div class="hidden sm:block">
                     <div class="flex items-center justify-end cursor-pointer">
-                        <a class="border border-white/10 px-8 py-2 rounded-full bg-white/10 font-semibold">Login</a>
+                        <a class="border border-white/10 px-8 py-2 rounded-full bg-white/10 font-semibold hover:bg-white/20">Login</a>
                     </div>
                 </div>
 

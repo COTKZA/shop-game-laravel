@@ -7,7 +7,7 @@ Route::get('/', function () {
 });
 
 Route::get('/store', function () {
-    return view('users.sotre');
+    return view('users.store');
 });
 
 Auth::routes();
