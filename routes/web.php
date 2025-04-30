@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users.home');
+});
+
+Route::get('/store', function () {
+    return view('users.sotre');
 });
 
 Auth::routes();
