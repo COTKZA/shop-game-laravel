@@ -15,4 +15,9 @@ class Purchases extends Model
         'product_details_id',
         'price',
     ];
+
+    public function product_details()
+    {
+        return $this->belongsTo(ProductDetails::class, 'product_details_id', 'id');
+    }
 }

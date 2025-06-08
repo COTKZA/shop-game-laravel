@@ -13,7 +13,7 @@
             </div>
             <div class="mt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 sm:px-4">
                 @foreach ($category as $items)
-                    <a
+                    <a href="/store/card/{{ $items->id }}"
                         class="cursor-pointer relative w-fit inline-block transform hover:translate-y-[-4px] transition duration-300">
                         <img src="data:image/*;base64,{{ $items->image }}" class="w-full h-[200px] rounded-xl object-cover"
                             alt="">

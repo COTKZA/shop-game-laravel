@@ -17,9 +17,10 @@ class HomeController extends Controller
         $member_count = User::count();
         $notify_message = Notify::get();
         $product_count = Products::count();
-        $product_details_count = ProductDetails::count();
+        $product_details_count = ProductDetails::where('is_sold', '!=', 'sold')->count();
         $purchases_count = Purchases::count();
 
+        $product = Products::orderBy('created_at', 'desc')->get();
 
         return view('users.home',
         compact([
@@ -28,6 +29,7 @@ class HomeController extends Controller
             'product_count',
             'product_details_count',
             'purchases_count',
+            'product',
         ]));
     }
 }

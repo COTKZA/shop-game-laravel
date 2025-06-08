@@ -6,39 +6,111 @@
 
         <div class="container mx-auto mt-30 md:px-4 min-h-screen">
             <div class="text-center">
-                <h1 class="mx-auto text-3xl py-2 font-semibold bg-gradient-to-r from-white to-white/20 w-fit bg-clip-text text-transparent">สินค้า</h1>
+                <h1
+                    class="mx-auto text-3xl py-2 font-semibold bg-gradient-to-r from-white to-white/20 w-fit bg-clip-text text-transparent">
+                    สินค้า</h1>
                 <p class="text-[16px] text-white/40">Product</p>
             </div>
 
             <div class="mt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5">
-                <div>
-                    <img src={{ asset('img/product.png') }} class="w-[768px] h-full object-center rounded-xl" alt="">
+                <div class="w-full h-full">
+                    {{-- รูปภาพใหญ่ที่จะแสดง --}}
+                    <img id="mainImage" src="data:image/*;base64,{{ $product->productimage->first()?->image }}"
+                        class="w-full h-[430px] object-center rounded-xl mb-2" alt="">
+
+                    {{-- Thumbnail Scroll --}}
+                    <div class="bg-white/10 rounded-xl h-40 overflow-x-auto whitespace-nowrap p-2 flex gap-2 mt-2">
+                        @foreach ($product->productimage as $index => $items)
+                            <img src="data:image/*;base64,{{ $items->image }}"
+                                data-image="data:image/*;base64,{{ $items->image }}"
+                                class="h-36 w-auto inline-block rounded-lg object-cover border border-gray-500 cursor-pointer thumbnail"
+                                alt="Thumbnail {{ $index }}">
+                        @endforeach
+                    </div>
                 </div>
-                <div class="bg-white/10  backdrop-blur-lg border border-white/30 rounded-xl h-[430px] p-6 flex flex-col justify-between">
+
+                <div
+                    class="bg-white/10  backdrop-blur-lg border border-white/30 rounded-xl h-[430px] p-6 flex flex-col justify-between">
                     <div>
                         <div class="flex  items-center justify-between gap-2">
-                            <h1 class="text-white text-[18px] sm:text-[18px]  md:text-[18px] lg:text-[36px] xl:text-[36px] font-bold">100-200 SKIN++ สกินแน่นๆ 💰</h1>
-                            <p class="text-white text-[12px] border border-white/30 bg-white/20 px-5 py-1 rounded-xl font-semibold text-nowrap">เหลือ 0 ชิ้น</p>
+                            <h1
+                                class="text-white text-[18px] sm:text-[18px]  md:text-[18px] lg:text-[36px] xl:text-[36px] font-bold">
+                                {{ $product->name }}</h1>
+                            <p
+                                class="text-white text-[12px] border border-white/30 bg-white/20 px-5 py-1 rounded-xl font-semibold text-nowrap">
+                                เหลือ
+                                {{ $product->productDetails->filter(fn($item) => $item->is_sold === 'available')->count() }}
+                                ชิ้น</p>
                         </div>
-                        <p class="font-bold text-[24px] bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent">ราคา 99 บาท</p>
+                        <p
+                            class="font-bold text-[24px] bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent">
+                            ราคา {{ $product->price }} บาท</p>
+                        <p class="text-white/90 text-sm mt-2">{{ $product->description }}</p>
                     </div>
-                    <div class="mt-5">
-                        <p class="text-white/90 text-sm">‼️อ่านก่อนจะซื้อสินค้า‼️</p>
-                        <div class="mt-2 sm:mb-1 md:mb-1 xl:mb-5">
-                            <p class="text-white/90 text-sm">✅ - การันตี Skin Valorant</p>
-                            <p class="text-white/90 text-sm">🔒 - รหัสเปลี่ยนข้อมูลไม่ได้</p>
-                            <p class="text-white/90 text-sm">🍀 - รหัสอาจมีคนเข้าซ้อนแต่ถ้าโชคดีก็ได้เล่นยาวๆ</p>
-                            <p class="text-white/90 text-sm">❗ - ไม่สามารถเข้าหน้าเว็บได้ ต้อง Login ผ่านตัวเกมอย่างเดียว
-                            </p>
-                            <p class="text-white/90 text-sm">📞 - หากรหัสมีปัญหา เข้าไม่ได้ โดนแบน โดนล็อค
-                                ติดต่อเคลมได้ในดิสคอร์ดร้าน</p>
-                            <p class="text-white/90 text-sm">🧧 - เคลมได้ 1 ครั้งต่อรหัส (ไม่นับตอนซื้อมาแล้วเข้าไม่ได้)</p>
-                        </div>
-                        <button class="w-full p-2 sm:p-3 md:p-3 lg:p-2 xl:p-3 bg-white text-gray-800 text-[18px] font-bold rounded-xl transform hover:translate-y-[-4px] transition duration-300 sm:mt-2 md:mt-2 xl:mt-2">สั่งซื้อ (1 ชิ้น)</button>
+                    <div>
+                        <button type="button"
+                            onclick="confirmOrder({{ $product->id }}, '{{ addslashes($product->name) }}', '/buy/product/{{ $product->id }}')"
+                            class="w-full p-2 sm:p-3 md:p-3 lg:p-2 xl:p-3 bg-white text-gray-800 text-[18px] font-bold rounded-xl transform hover:translate-y-[-4px] transition duration-300 sm:mt-2 md:mt-2 xl:mt-2">
+                            สั่งซื้อ (1 ชิ้น)
+                        </button>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const mainImage = document.getElementById('mainImage');
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const newSrc = this.getAttribute('data-image');
+                    mainImage.setAttribute('src', newSrc);
+                });
+            });
+        });
+
+        // buy product
+        function confirmOrder(productId, productName, path) {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            Swal.fire({
+                title: 'ยืนยันการสั่งซื้อ?',
+                text: `คุณต้องการสั่งซื้อสินค้า: ${productName} ใช่หรือไม่?`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'ใช่, สั่งซื้อ',
+                cancelButtonText: 'ยกเลิก'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(path, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': csrfToken
+                            },
+                            body: JSON.stringify({
+                                product_id: productId
+                            })
+                        })
+                        .then(res => {
+                            if (!res.ok) throw new Error('HTTP error ' + res.status);
+                            return res.json();
+                        })
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire('สั่งซื้อสำเร็จ!', data.message || '', 'success');
+                            } else {
+                                Swal.fire('ผิดพลาด', data.message || 'ไม่สามารถสั่งซื้อได้', 'error');
+                            }
+                        })
+                        .catch(() => {
+                            Swal.fire('ผิดพลาด', 'เกิดข้อผิดพลาดขณะส่งข้อมูล', 'error');
+                        });
+                }
+            });
+        }
+    </script>
 @endsection

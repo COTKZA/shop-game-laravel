@@ -48,7 +48,7 @@
                         ประกาศ
                     </h1>
                     <marquee behavior="scroll" direction="right" class="text-white font-medium py-2 text-[18px]">
-                        @foreach ( $notify_message as $items )
+                        @foreach ($notify_message as $items)
                             {{ $items->message ?? 'ไม่มีประกาศ' }}
                         @endforeach
                     </marquee>
@@ -72,7 +72,10 @@
                     <div class="mt-1 ml-2 text-white">
                         <i class="fa-regular fa-user" style="font-size: 70px;"></i>
                     </div>
-                    <h5 class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold"><b>ผู้ใช้ทั้งหมด</b></h5>
+                    <h5
+                        class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold">
+                        <b>ผู้ใช้ทั้งหมด</b>
+                    </h5>
                     <h2 class="text-strong text-2xl text-white mt-[10px] ml-[100px] font-semibold"><span
                             class="m-0 h5">{{ $member_count }}</span><span class="m-0 h5"> คน</span></h2>
                 </div>
@@ -83,7 +86,10 @@
                     <div class="mt-1 ml-2 text-white">
                         <i class="fa-brands fa-product-hunt" style="font-size: 70px;"></i>
                     </div>
-                    <h5 class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold"><b>สินค้าทั้งหมด</b></h5>
+                    <h5
+                        class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold">
+                        <b>สินค้าทั้งหมด</b>
+                    </h5>
                     <h2 class="text-strong text-2xl text-white mt-[10px] ml-[100px] font-semibold"><span
                             class="m-0 h5">{{ $product_count }}</span><span class="m-0 h5"> ชิ้น</span></h2>
                 </div>
@@ -94,7 +100,10 @@
                     <div class="mt-1 ml-2 text-white">
                         <i class="fa-solid fa-boxes-stacked" style="font-size: 70px;"></i>
                     </div>
-                    <h5 class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold"><b>สต็อกทั้งหมด</b></h5>
+                    <h5
+                        class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold">
+                        <b>สต็อกทั้งหมด</b>
+                    </h5>
                     <h2 class="text-strong text-2xl text-white mt-[10px] ml-[100px] font-semibold"><span
                             class="m-0 h5">{{ $product_details_count }}</span><span class="m-0 h5"> ชิ้น</span></h2>
                 </div>
@@ -105,7 +114,10 @@
                     <div class="mt-1 ml-2 text-white">
                         <i class="fa-solid fa-check" style="font-size: 70px;"></i>
                     </div>
-                    <h5 class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold"><b>ขายเเล้วทั้งหมด</b></h5>
+                    <h5
+                        class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold">
+                        <b>ขายเเล้วทั้งหมด</b>
+                    </h5>
                     <h2 class="text-strong text-2xl text-white mt-[10px] ml-[100px] font-semibold"><span
                             class="m-0 h5">{{ $purchases_count }}</span><span class="m-0 h5"> ชิ้น</span></h2>
                 </div>
@@ -122,185 +134,28 @@
         <div class="container mx-auto mt-3">
             <div class="mt-2 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6    gap-2">
 
-                <!-- card 1 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png"
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
+                @foreach ($product as $items)
+                    <div
+                        class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
+                        <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
+                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
+                            <div class="w-full h-full">
+                                <img src="data:image/*;base64,{{ $items->productimage->first()?->image }}"
+                                    alt="product_image" class="rounded-lg mb-4 w-full h-40">
+                            </div>
+                            <p class="text-white/40 text-[10px]">เหลือ
+                                {{ $items->productDetails->filter(fn($i) => $i->is_sold === 'available')->count() }} ชิ้น
+                            </p>
+                            <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">{{ $items->name }}</h1>
+                            <h1
+                                class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
+                                {{ $items->price }} บาท</h1>
+                            <a href="/store/product_details/{{ $items->id }}"
+                                class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
+                                style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- card 2 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png"
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
-                    </div>
-                </div>
-
-                <!-- card 3 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png"
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
-                    </div>
-                </div>
-
-                <!-- card 4 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png"
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
-                    </div>
-                </div>
-
-                <!-- card 5 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png"
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
-                    </div>
-                </div>
-
-                <!-- card 6 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png "
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
-                    </div>
-                </div>
-
-                <!-- card 7 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png"
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
-                    </div>
-                </div>
-
-                <!-- card 8 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png"
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
-                    </div>
-                </div>
-
-                <!-- card 9 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl  cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png"
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
-                    </div>
-                </div>
-
-                <!-- card 10 -->
-                <div
-                    class="p-[1px] h-fit bg-gradient-to-t from-white/0 to-white/20 rounded-xl cursor-pointer transform hover:translate-y-[-4px] transition duration-300">
-                    <div class="p-2.5 sm:p-4 rounded-xl bg-zinc-900"
-                        style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));">
-                        <img src="https://pics.rdcw.xyz/storage/6b23474b94430b7b1d20e79ff9cdf31ce6d637e6.png"
-                            alt="product_image" class="rounded-lg mb-4">
-                        <p class="text-white/40 text-[10px]">เหลือ 0 ชิ้น</p>
-                        <h1 class="text-xl sm:text-2xl font-semibold leading-6 break-all">1-1000 SKIN</h1>
-                        <h1
-                            class="text-lg sm:text-xl bg-gradient-to-tr from-green-500 to-emerald-500 w-fit bg-clip-text text-transparent font-semibold">
-                            10 บาท</h1>
-                        <a href=""
-                            class="px-6 py-2 text-center bg-white/10 rounded-lg border border-white/10 whitespace-nowrap transition ease-in hover:bg-white/20 active:scale-95 block mt-4 text-sm sm:text-base"
-                            style="background-image: linear-gradient(60deg, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));">สั่งซื้อ</a>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>

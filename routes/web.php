@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\StoreController;
+use App\Http\Controllers\User\OrderHistoryController;
 
 use App\Http\Controllers\Admin\NotifyController;
 use App\Http\Controllers\Admin\AccountsController;
@@ -16,21 +17,11 @@ use App\Http\Controllers\Admin\ProductController;
 //////////////////////////////////////////////////// Users  ////////////////////////////////////////////////////////////////////
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/store', [StoreController::class, 'index']);
-// Route::get('/store', function () {
-//     return view('users.store');
-// });
 
-Route::get('/store/store_category', function() {
-    return view('users.store.store_category');
-});
-
-Route::get('/store/card', function() {
-    return view('users.store.store_card');
-});
-
-Route::get('/store/product_details', function() {
-    return view('users.store.store_details');
-});
+// store
+Route::get('/store/card/{id}', [StoreController::class, 'product_category']);
+Route::get('/store/product_details/{id}', [StoreController::class, 'product_details']);
+Route::post('/buy/product/{id}', [StoreController::class, 'buy_product']);
 
 Route::get('/topup', function() {
     return view('users.topup');
@@ -44,9 +35,7 @@ Route::get('/topup/truemoney', function() {
     return view('users.topup.truemoney');
 });
 
-Route::get('/history/order', function() {
-    return view('users.history.orders');
-});
+Route::get('/history/order', [OrderHistoryController::class, 'index']);
 
 Route::get('/history/topup', function() {
     return view('users.history.topup');
