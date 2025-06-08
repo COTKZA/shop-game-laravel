@@ -48,9 +48,7 @@
                         ประกาศ
                     </h1>
                     <marquee behavior="scroll" direction="right" class="text-white font-medium py-2 text-[18px]">
-                        @foreach ( $notify_message as $items )
-                            {{ $items->message ?? 'ไม่มีประกาศ' }}
-                        @endforeach
+                        ประกาศสำคัญ: นี่คือข้อความประกาศตัวอย่างที่สามารถเลื่อนได้
                     </marquee>
                 </div>
             </div>
@@ -72,9 +70,9 @@
                     <div class="mt-1 ml-2 text-white">
                         <i class="fa-regular fa-user" style="font-size: 70px;"></i>
                     </div>
-                    <h5 class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold"><b>ผู้ใช้ทั้งหมด</b></h5>
+                    <h5 class="text-fuchsia-500 text-2xl mt-[-75px] ml-[100px] font-semibold"><b>ผู้ใช้ทั้งหมด</b></h5>
                     <h2 class="text-strong text-2xl text-white mt-[10px] ml-[100px] font-semibold"><span
-                            class="m-0 h5">{{ $member_count }}</span><span class="m-0 h5"> คน</span></h2>
+                            class="m-0 h5">54367</span><span class="m-0 h5"> คน</span></h2>
                 </div>
 
                 <!-- card2 -->
@@ -83,9 +81,9 @@
                     <div class="mt-1 ml-2 text-white">
                         <i class="fa-brands fa-product-hunt" style="font-size: 70px;"></i>
                     </div>
-                    <h5 class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold"><b>สินค้าทั้งหมด</b></h5>
+                    <h5 class="text-fuchsia-500 text-2xl mt-[-75px] ml-[100px] font-semibold"><b>สินค้าทั้งหมด</b></h5>
                     <h2 class="text-strong text-2xl text-white mt-[10px] ml-[100px] font-semibold"><span
-                            class="m-0 h5">{{ $product_count }}</span><span class="m-0 h5"> ชิ้น</span></h2>
+                            class="m-0 h5">365</span><span class="m-0 h5"> ชิ้น</span></h2>
                 </div>
 
                 <!-- card3 -->
@@ -94,9 +92,9 @@
                     <div class="mt-1 ml-2 text-white">
                         <i class="fa-solid fa-boxes-stacked" style="font-size: 70px;"></i>
                     </div>
-                    <h5 class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold"><b>สต็อกทั้งหมด</b></h5>
+                    <h5 class="text-fuchsia-500 text-2xl mt-[-75px] ml-[100px] font-semibold"><b>สต็อกทั้งหมด</b></h5>
                     <h2 class="text-strong text-2xl text-white mt-[10px] ml-[100px] font-semibold"><span
-                            class="m-0 h5">{{ $product_details_count }}</span><span class="m-0 h5"> ชิ้น</span></h2>
+                            class="m-0 h5">54367</span><span class="m-0 h5"> ชิ้น</span></h2>
                 </div>
 
                 <!-- card4 -->
@@ -105,9 +103,9 @@
                     <div class="mt-1 ml-2 text-white">
                         <i class="fa-solid fa-check" style="font-size: 70px;"></i>
                     </div>
-                    <h5 class="bg-gradient-to-tr from-green-500 to-emerald-500 bg-clip-text text-transparent text-2xl mt-[-75px] ml-[100px] font-semibold"><b>ขายเเล้วทั้งหมด</b></h5>
+                    <h5 class="text-fuchsia-500 text-2xl mt-[-75px] ml-[100px] font-semibold"><b>ขายเเล้วทั้งหมด</b></h5>
                     <h2 class="text-strong text-2xl text-white mt-[10px] ml-[100px] font-semibold"><span
-                            class="m-0 h5">{{ $purchases_count }}</span><span class="m-0 h5"> ชิ้น</span></h2>
+                            class="m-0 h5">24377</span><span class="m-0 h5"> ชิ้น</span></h2>
                 </div>
 
             </div>

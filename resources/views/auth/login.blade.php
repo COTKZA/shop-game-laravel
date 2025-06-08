@@ -1,73 +1,74 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <div class="relative overflow-hidden bg-cover bg-center px-4 sm:px-0 pb-10"
+        style="background-image: linear-gradient(rgba(21, 128, 61, 0.9), rgb(24, 24, 27) 90%), url(&quot;https://i.ibb.co/hXhg16t/image.webp&quot;);">
+        <div class="min-h-screen flex flex-col items-center justify-center">
+            <div class="flex flex-col items-center justify-center">
+                <h1
+                    class="mx-auto text-3xl py-2 font-semibold bg-gradient-to-r from-white to-white/20 w-fit bg-clip-text text-transparent">
+                    Login to Maeb Shop</h1>
+                <p class="text-white/40">เข้าสู่ระบบร้านค้า</p>
 
-                <div class="card-body">
+            </div>
+            <div class="w-full sm:w-[400px] pt-5">
+                <div
+                    class="p-6 rounded-xl bg-gradient-to-t from-zinc-900 to-zinc-800 border border-zinc-800 shadow-lg w-full">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="mt-1">
+                            <p class="text-sm text-white/40 mb-1">อีเมล</p>
+                            <input type="email" id="email" name="email"
+                                class="bg-zinc-800 rounded-xl w-full px-4 py-3" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm text-white/40 mb-1">รหัสผ่าน</p>
+                            <input type="password" id="password" name="password"
+                                class="bg-zinc-800 rounded-xl w-full px-4 py-3" required autocomplete="current-password">
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
+                        <div class="mt-5">
+                            <button type="submit"
+                                class="w-full bg-gradient-to-tr from-green-500 to-emerald-500 py-3 rounded-xl transition ease-in hover:-translate-y-1 hover:shadow-lg hover:shadow-green-500/40 active:scale-95 text-white font-semibold">
+                                เข้าสู่ระบบ
+                            </button>
                         </div>
                     </form>
+                    <div class="pt-4 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <p class="text-[12px] text-white/40">หรือยังไม่เคยสมัครเลย?</p>
+                            <a href="/register" class="text-[12px] text-green-500 ml-1 hover:underline">สร้างบัญชีผู้ใช้</a>
+                        </div>
+                        <a href="" class="text-[12px] text-white/40 hover:underline">ลืมรหัสผ่าน?</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- SweetAlert2 for Success and Error -->
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "สำเร็จ!",
+                text: "{{ session('success') }}",
+                icon: "success",
+                confirmButtonColor: "#10B981",
+                confirmButtonText: "ตกลง"
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+                icon: "error",
+                confirmButtonColor: "#EF4444",
+                confirmButtonText: "ตกลง"
+            });
+        </script>
+    @endif
 @endsection
