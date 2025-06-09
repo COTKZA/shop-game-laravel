@@ -11,11 +11,11 @@
                 </h1>
                 <p class="text-white/40">Topup Histories</p>
             </div>
-            <div class="flex justify-center">
+            {{-- <div class="flex justify-center">
                 <input type="search"
                     class="w-[300px] py-2.5 px-4 rounded-full bg-white/10 border-[1px] border-white/10 hover:bg-white/20"
                     placeholder="ค้นหาประวัติข้อมูล">
-            </div>
+            </div> --}}
 
             <div class="w-full p-8">
                 <div class="overflow-hidden mb-4 mt-8">
@@ -41,23 +41,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border-b border-white/10 text-white">
-                                    <td class="p-4">8/08/2025, 16:55:34 AM</td>
-                                    <td class="p-4">ทรูมันนี่ อังเปา</td>
-                                    <td class="p-4 text-success whitespace-nowrap">เสร็จสิ้น</td>
-                                    <td class="p-4">10</td>
-                                    <td class="p-4">1kosunnsdpdkm923mdsma</td>
-                                </tr>
+                                @foreach ($wallet_transaction_user as $items)
+                                    <tr class="border-b border-white/10 text-white">
+                                        <td class="p-4">{{ $items->created_at }}</td>
+                                        <td class="p-4">{{ $items->transaction_type }}</td>
+                                        @php
+                                            switch ($items->payment_state) {
+                                                case 'pending':
+                                                    $text = 'รอดำเนินการ';
+                                                    $color = 'text-yellow-500';
+                                                    break;
+                                                case 'success':
+                                                    $text = 'สำเร็จ';
+                                                    $color = 'text-green-500';
+                                                    break;
+                                                case 'expired':
+                                                    $text = 'จำนวนเงินไม่ถูกต้อง';
+                                                    $color = 'text-red-500';
+                                                    break;
+                                                default:
+                                                    $text = $items->payment_state;
+                                                    $color = 'text-white';
+                                            }
+                                        @endphp
+
+                                        <td class="p-4 whitespace-nowrap {{ $color }}">
+                                            {{ $text }}</td>
+                                        <td class="p-4">{{ $items->amount }}</td>
+                                        <td class="p-4">{{ $items->ref_code }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                     <div class="mt-4">
-                        <h1 class="text-white">หน้าที่ 1</h1>
-                        <p class="text-white/50">จากทั้งหมด 1 หน้า</p>
-                    </div>
-                    <div class="flex justify-between mt-4">
-                        <button class="w-[80px] sm:w-[80px] border-2 border-white/10 bg-white/5"><i class="fa-solid fa-angle-left"></i></button>
-                        <button class="w-[80px] sm:w-[80px] border-2 border-white/10 bg-white/5"><i class="fa-solid fa-angle-right"></i></button>
+                        {{ $wallet_transaction_user->withQueryString()->links() }}
                     </div>
                 </div>
             </div>

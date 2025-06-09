@@ -11,6 +11,8 @@ class Wallets extends Model
         'balance',
     ];
 
+    public $timestamps = false;
+
     protected $table = 'wallets';
 
     public function user(){

@@ -48,11 +48,18 @@
                         <p class="text-white/90 text-sm mt-2">{{ $product->description }}</p>
                     </div>
                     <div>
-                        <button type="button"
-                            onclick="confirmOrder({{ $product->id }}, '{{ addslashes($product->name) }}', '/buy/product/{{ $product->id }}')"
-                            class="w-full p-2 sm:p-3 md:p-3 lg:p-2 xl:p-3 bg-white text-gray-800 text-[18px] font-bold rounded-xl transform hover:translate-y-[-4px] transition duration-300 sm:mt-2 md:mt-2 xl:mt-2">
-                            สั่งซื้อ (1 ชิ้น)
-                        </button>
+                        @if (Auth::check())
+                            <button type="button"
+                                onclick="confirmOrder({{ $product->id }}, '{{ addslashes($product->name) }}', '/buy/product/{{ $product->id }}')"
+                                class="w-full p-2 sm:p-3 md:p-3 lg:p-2 xl:p-3 bg-white text-gray-800 text-[18px] font-bold rounded-xl transform hover:translate-y-[-4px] transition duration-300 sm:mt-2 md:mt-2 xl:mt-2">
+                                สั่งซื้อ (1 ชิ้น)
+                            </button>
+                        @else
+                            <button type="button" onclick="window.location.href='/login';"
+                                class="w-full p-2 sm:p-3 md:p-3 lg:p-2 xl:p-3 bg-white text-gray-800 text-[18px] font-bold rounded-xl transform hover:translate-y-[-4px] transition duration-300 sm:mt-2 md:mt-2 xl:mt-2">
+                                สั่งซื้อ (1 ชิ้น)
+                            </button>
+                        @endif
                     </div>
                 </div>
             </div>

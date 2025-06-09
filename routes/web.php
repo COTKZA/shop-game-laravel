@@ -7,12 +7,15 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\StoreController;
 use App\Http\Controllers\User\OrderHistoryController;
+use App\Http\Controllers\User\TopupHistoryController;
+use App\Http\Controllers\User\WalletTransactionController;
 
 use App\Http\Controllers\Admin\NotifyController;
 use App\Http\Controllers\Admin\AccountsController;
 use App\Http\Controllers\Admin\WalletController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+
 
 //////////////////////////////////////////////////// Users  ////////////////////////////////////////////////////////////////////
 Route::get('/', [HomeController::class, 'index']);
@@ -23,27 +26,23 @@ Route::get('/store/card/{id}', [StoreController::class, 'product_category']);
 Route::get('/store/product_details/{id}', [StoreController::class, 'product_details']);
 Route::post('/buy/product/{id}', [StoreController::class, 'buy_product']);
 
+// Topup
 Route::get('/topup', function() {
     return view('users.topup');
 });
-
-Route::get('/topup/slip-verify', function() {
-    return view('users.topup.slip_verify');
-});
-
 Route::get('/topup/truemoney', function() {
     return view('users.topup.truemoney');
 });
+Route::get('/topup/slip-verify', function() {
+    return view('users.topup.slip_verify');
+});
+Route::post('/add_payment', [WalletTransactionController::class, 'add_payment']);
+Route::post('/add_truemoney', [WalletTransactionController::class, 'add_truemoney']);
+
 
 Route::get('/history/order', [OrderHistoryController::class, 'index']);
+Route::get('/history/topup', [TopupHistoryController::class, 'index']);
 
-Route::get('/history/topup', function() {
-    return view('users.history.topup');
-});
-
-Route::get('/topup/choose_amount', function() {
-    return view('users.topup.choose_amount');
-});
 
 Route::get('/store/random_wheel', function() {
     return view('users.store.random_wheel');
