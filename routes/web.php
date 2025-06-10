@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\AccountsController;
 use App\Http\Controllers\Admin\WalletController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
-
+use App\Http\Controllers\Admin\TransactionController;
 
 //////////////////////////////////////////////////// Users  ////////////////////////////////////////////////////////////////////
 Route::get('/', [HomeController::class, 'index']);
@@ -92,6 +92,11 @@ Route::get('/admin/product/product_details/{id}', [ProductController::class, 'pr
 Route::post('/add_productdetails', [ProductController::class, 'add_productdetails']);
 Route::post('/edit_productdetails/{id}', [ProductController::class, 'edit_productdetails']);
 Route::post('/delete_productdetails/{id}', [ProductController::class, 'delete_productdetails']);
+
+// Wallet Transaction
+Route::get('/admin/wallet_transaction', [TransactionController::class, 'index']);
+Route::post('/approve_wallet/{id}', [TransactionController::class, 'approve_wallet']);
+Route::post('/reject_wallet/{id}', [TransactionController::class, 'reject_wallet']);
 //////////////////////////////////////////////////// Admin  ////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////// Auth  ////////////////////////////////////////////////////////////////////

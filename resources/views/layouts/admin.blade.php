@@ -186,6 +186,63 @@
                             </div>
                         </div>
 
+                        <!-- Transactions  -->
+                        <div class="relative block w-full font-sans">
+                            <button type="button"
+                                class="transactions-toggle flex items-center justify-between w-full p-3 text-xl font-semibold text-left text-blue-gray-700 rounded-lg transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                                aria-expanded="false" data-initial-state="closed">
+                                <div class="flex items-center">
+                                    <div class="grid mr-4 place-items-center">
+                                        <i class="fa-solid fa-money-bill-transfer"></i>
+                                    </div>
+                                    <p class="block text-base font-normal text-blue-gray-900">
+                                        Transactions
+                                    </p>
+                                </div>
+                                <span class="transactions-arrow ml-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" stroke="currentColor" aria-hidden="true"
+                                        class="w-4 h-4 mx-auto transition-transform">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                            <div
+                                class="transactions-menu overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                                <div class="block w-full py-1 text-sm font-light text-gray-700">
+                                    <nav
+                                        class="flex min-w-[240px] flex-col gap-1 p-0 text-base font-normal text-gray-100">
+                                        <div role="button"
+                                            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-gary-100 text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                                            <div class="grid mr-4 place-items-center text-gary-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                                                    aria-hidden="true" class="w-5 h-3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+                                                </svg>
+                                            </div>
+                                            <a href="/admin/wallet_transaction">Wallet Transactions</a>
+                                        </div>
+                                        <div role="button"
+                                            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                                            <div class="grid mr-4 place-items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                                                    aria-hidden="true" class="w-5 h-3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+                                                </svg>
+                                            </div>
+                                            <a href="/admin/product">Purchases</a>
+
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="relative block w-full font-sans">
                             <button type="button"
                                 class="setting-toggle flex items-center justify-between w-full p-3 text-xl font-semibold text-left text-blue-gray-700 rounded-lg transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
@@ -349,6 +406,7 @@
                 setupToggleMenu('ecommerce');
                 setupToggleMenu('setting');
                 setupToggleMenu('account');
+                setupToggleMenu('transactions');
             });
 
             document.addEventListener('DOMContentLoaded', function() {
