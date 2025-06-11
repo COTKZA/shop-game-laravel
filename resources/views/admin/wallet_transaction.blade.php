@@ -2,7 +2,7 @@
 @section('content')
     <div class="container mx-auto">
         {{-- filtter --}}
-        <div class="bg-black w-full p-3 rounded-t-lg">
+        <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg">
             <h1 class="text-xl font-bold">Filtter</h1>
         </div>
         <div class="bg-gray-700 p-3 shadow-xl rounded-b-lg">
@@ -18,7 +18,7 @@
         </div>
 
         <!-- info table -->
-        <div class="bg-black w-full p-3 rounded-t-lg mt-10">
+        <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg mt-10">
             <h1 class="text-xl font-bold">Wallet Transaction Info</h1>
         </div>
         <div class="p-3 shadow-xl rounded-b-lg bg-gray-700">
@@ -51,11 +51,11 @@
                                 </td>
                                 <td>
                                     <div>
-                                        {{ $items->truemoney_gifts ?? 'ไม่มีข้อมูล' }}<i class="fa-solid fa-copy ml-2"></i>
+                                        {{ $items->truemoney_gifts ?? 'ไม่มีข้อมูล' }}
                                     </div>
                                 </td>
                                 <td>
-                                    {{ $items->ref_code }} <i class="fa-solid fa-copy ml-2"></i>
+                                    {{ $items->ref_code }}
                                 </td>
                                 @php
                                     switch ($items->payment_state) {

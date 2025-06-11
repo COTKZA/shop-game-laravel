@@ -32,6 +32,12 @@ class AccountsController extends Controller
 
         $users = User::findOrFail($id);
 
+        $isBanned = Bans::where('user_id', $users->id)->exists();
+
+        if($isBanned){
+            return back()->with('error', 'บัญชีนี้ถูกเเบนอยู่เเล้ว');
+        }
+
         Bans::create([
             'user_id' => $users->id,
             'reason' => $request->reason,

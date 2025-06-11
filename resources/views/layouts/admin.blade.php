@@ -32,10 +32,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="">
-    <div id="app" >
+<body>
+    <div id="app">
 
-        <div class="flex bg-slate-800" >
+        <div class="flex bg-slate-800">
             <!-- Mobile menu button -->
             <button id="sidebarToggle" class="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-white shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -52,7 +52,8 @@
             <!-- Sidebar -->
             <div id="sidebar"
                 class="sidebar-mobile sidebar-transition fixed md:relative z-50  w-[20rem] bg-slate-900 shadow-xl md:shadow-none hidden lg:block">
-                <div class="relative flex h-full w-full flex-col rounded-xl bg-slate-900 bg-clip-border p-4 text-gray-100">
+                <div
+                    class="relative flex h-full w-full flex-col rounded-xl bg-slate-900 bg-clip-border p-4 text-gray-100">
                     <div class="p-4 mb-2">
                         <h5
                             class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 text-center">
@@ -61,6 +62,53 @@
                     </div>
                     <nav
                         class="flex bordershadow-xl flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700 h-screen">
+
+                        <div class="relative block w-full font-sans">
+                            <button type="button"
+                                class="dashboard-toggle flex items-center justify-between w-full p-3 text-xl font-semibold text-left text-blue-gray-700 rounded-lg transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                                aria-expanded="false" data-initial-state="closed">
+                                <div class="flex items-center">
+                                    <div class="grid mr-4 place-items-center">
+                                        <i class="fa-solid fa-gauge-high"></i>
+                                    </div>
+                                    <p class="block text-base font-normal text-blue-gray-900">
+                                        Dashboard
+                                    </p>
+                                </div>
+                                <span class="dashboard-arrow ml-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" stroke="currentColor" aria-hidden="true"
+                                        class="w-4 h-4 mx-auto transition-transform">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="dashboard-menu overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                                <div class="block w-full py-1 text-sm font-light text-gray-700">
+                                    <nav
+                                        class="flex min-w-[240px] flex-col gap-1 p-0 text-base font-normal text-gray-100">
+                                        <div role="button"
+                                            class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                                            <div class="grid mr-4 place-items-center text-gary-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                                                    aria-hidden="true" class="w-5 h-3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="flex items-center gap-2 text-gary-100">
+                                                <a href="/admin/dashboard">
+                                                    Dashboard
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Account Setting -->
                         <div class="relative block w-full font-sans">
@@ -103,9 +151,26 @@
                                                     Account
                                                 </a>
                                             </div>
+                                        </div>
+
+                                         <div role="button"
+                                            class="flex items-center w-full p-3 leading-tight transition-all  rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                                            <div class="grid mr-4 place-items-center text-gary-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                                                    aria-hidden="true" class="w-5 h-3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+                                                </svg>
                                             </div>
-                                            <div role="button"
-                                                class="flex items-center w-full p-3 leading-tight transition-all  rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                                            <div class="flex items-center gap-2 text-gary-100">
+                                                <a href="/admin/account_ban">
+                                                    Account Ban</a>
+                                            </div>
+                                        </div>
+
+                                        <div role="button"
+                                            class="flex items-center w-full p-3 leading-tight transition-all  rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                                             <div class="grid mr-4 place-items-center text-gary-100">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
@@ -119,6 +184,7 @@
                                                     Wallet</a>
                                             </div>
                                         </div>
+
                                     </nav>
                                 </div>
                             </div>
@@ -131,8 +197,8 @@
                                 aria-expanded="false" data-initial-state="closed">
                                 <div class="flex items-center">
                                     <div class="grid mr-4 place-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                            aria-hidden="true" class="w-5 h-5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="currentColor" aria-hidden="true" class="w-5 h-5">
                                             <path fill-rule="evenodd"
                                                 d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z"
                                                 clip-rule="evenodd"></path>
@@ -235,7 +301,7 @@
                                                         d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
                                                 </svg>
                                             </div>
-                                            <a href="/admin/product">Purchases</a>
+                                            <a href="/admin/purchases">Purchases</a>
 
                                         </div>
                                     </nav>
@@ -278,9 +344,9 @@
                                                         d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
                                                 </svg>
                                             </div>
-                                            <a href="/admin/notify" >Notify</a>
+                                            <a href="/admin/notify">Notify</a>
                                         </div>
-                                        <div role="button"
+                                        {{-- <div role="button"
                                             class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                                             <div class="grid mr-4 place-items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -291,7 +357,7 @@
                                                 </svg>
                                             </div>
                                             <a href="">Products</a>
-                                        </div>
+                                        </div> --}}
                                     </nav>
                                 </div>
                             </div>
@@ -300,7 +366,7 @@
                         <hr class="my-2 border-blue-gray-50" />
 
                         <!-- Other Menu Items -->
-                        <div role="button"
+                        {{-- <div role="button"
                             class="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                             <div class="grid mr-4 place-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -341,7 +407,7 @@
                                 </svg>
                             </div>
                             Settings
-                        </div>
+                        </div> --}}
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit"
@@ -407,6 +473,7 @@
                 setupToggleMenu('setting');
                 setupToggleMenu('account');
                 setupToggleMenu('transactions');
+                setupToggleMenu('dashboard');
             });
 
             document.addEventListener('DOMContentLoaded', function() {

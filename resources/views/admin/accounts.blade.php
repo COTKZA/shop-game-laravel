@@ -2,7 +2,7 @@
 @section('content')
     <div class="container mx-auto">
         {{-- filtter --}}
-        <div class="bg-black w-full p-3 rounded-t-lg">
+        <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg">
             <h1 class="text-xl font-bold">Filtter</h1>
         </div>
         <div class="bg-gray-700   p-3 shadow-xl rounded-b-lg">
@@ -18,7 +18,7 @@
         </div>
 
         <!-- info table -->
-        <div class="bg-black w-full p-3 rounded-t-lg mt-10">
+        <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg mt-10">
             <h1 class="text-xl font-bold">Account Info</h1>
         </div>
         <div class="p-3 shadow-xl rounded-b-lg bg-gray-700">
@@ -29,6 +29,7 @@
                             <th>ลำดับ</th>
                             <th>ชื่อ</th>
                             <th>อีเมล</th>
+                            <th>สถานะบัญชี</th>
                             <th>ตำแหน่ง</th>
                             <th>ดำเนินการ</th>
                         </tr>
@@ -39,6 +40,34 @@
                                 <th>{{ $items->id }}</th>
                                 <td>{{ $items->name }}</td>
                                 <td>{{ $items->email }}</td>
+                                @php
+                                    if ($items->user_ban) {
+                                        switch ($items->user_ban->user_status) {
+                                            case 'active':
+                                                $text = 'ปกติ';
+                                                $color = 'badge badge-success';
+                                                break;
+
+                                            case 'banned':
+                                                $text = 'ถูกระงับ';
+                                                $color = 'badge badge-error';
+                                                break;
+
+                                            default:
+                                                $text = $items->user_ban->user_status;
+                                                $color = 'text-white';
+                                                break;
+                                        }
+                                    } else {
+                                        $text = 'ปกติ';
+                                        $color = 'badge badge-success';
+                                    }
+                                @endphp
+                                <td>
+                                    <div class="{{ $color }} text-white font-bold">
+                                        {{ $text }}
+                                    </div>
+                                </td>
                                 <td>{{ $items->role }}</td>
                                 <td>
                                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
@@ -118,7 +147,8 @@
 
                 <div class="flex flex-col mt-2">
                     <label for="" class="text-gray-800 text-sm font-bold">ตำเเหน่ง</label>
-                    <select name="role" id="roleMessageText" class="select w-full bg-white border border-gray-500  text-gray-800 text-sm">
+                    <select name="role" id="roleMessageText"
+                        class="select w-full bg-white border border-gray-500  text-gray-800 text-sm">
                         <option disabled selected>เลือกจำเเหน่ง</option>
                         <option value="user">User</option>
                         <option value="admin">Admin</option>

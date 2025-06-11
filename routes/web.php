@@ -16,6 +16,9 @@ use App\Http\Controllers\Admin\WalletController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\PurchasesController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AccountBanController;
 
 //////////////////////////////////////////////////// Users  ////////////////////////////////////////////////////////////////////
 Route::get('/', [HomeController::class, 'index']);
@@ -51,9 +54,6 @@ Route::get('/store/random_wheel', function() {
 //////////////////////////////////////////////////// Users  ////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////// Admin  ////////////////////////////////////////////////////////////////////
-Route::get('/admin/dashboard', function(){
-    return view('admin.dashboard');
-});
 
 // notify
 Route::get('/admin/notify', [NotifyController::class, 'index']);
@@ -97,6 +97,17 @@ Route::post('/delete_productdetails/{id}', [ProductController::class, 'delete_pr
 Route::get('/admin/wallet_transaction', [TransactionController::class, 'index']);
 Route::post('/approve_wallet/{id}', [TransactionController::class, 'approve_wallet']);
 Route::post('/reject_wallet/{id}', [TransactionController::class, 'reject_wallet']);
+
+//Account Ban
+Route::get('/admin/account_ban', [AccountBanController::class, 'index']);
+Route::post('/account_ban/{id}', [AccountBanController::class, 'account_ban']);
+Route::post('/account_unban/{id}', [AccountBanController::class, 'account_unban']);
+
+// Purchases
+Route::get('/admin/purchases', [PurchasesController::class, 'index']);
+
+// Dashboard
+Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 //////////////////////////////////////////////////// Admin  ////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////// Auth  ////////////////////////////////////////////////////////////////////

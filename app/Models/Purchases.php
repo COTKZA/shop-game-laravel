@@ -16,6 +16,11 @@ class Purchases extends Model
         'price',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
     public function product_details()
     {
         return $this->belongsTo(ProductDetails::class, 'product_details_id', 'id');

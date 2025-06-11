@@ -18,7 +18,7 @@ class HomeController extends Controller
         $notify_message = Notify::get();
         $product_count = Products::count();
         $product_details_count = ProductDetails::where('is_sold', '!=', 'sold')->count();
-        $purchases_count = Purchases::count();
+        $purchases_count = ProductDetails::where('is_sold', '=', 'sold')->count();
 
         $product = Products::orderBy('created_at', 'desc')->get();
 
