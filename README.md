@@ -62,7 +62,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 # Shop Game
 
-ระบบนี้เป็น e-commerce มีระบบ Auth , CRUD เเละ อื่นๆ เป็นเว็ปขายID Game เเละ ขายรหัสต่างๆ
+This system is an e-commerce platform that includes authentication, CRUD functionality, and other features. It is a website for selling game IDs and various types of accounts.
 
 ## Authors
 
@@ -71,7 +71,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Demo
 
-เว็ปไซต์ ตัวอย่าง: ['']
+website: ['']
 
 ## Installation
 
