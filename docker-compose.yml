@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+
+  webserver:
+    container_name: shop-game
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DOCKER=1
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    ports:
+      - "8087:80"
+    volumes:
+      - .:/var/www/html
+      - ./storage:/var/www/html/storage
+      - ./public:/var/www/html/public
