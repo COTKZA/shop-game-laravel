@@ -59,4 +59,83 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# shop-game-laravel
+
+# Shop Game
+
+ระบบนี้เป็น e-commerce มีระบบ Auth , CRUD เเละ อื่นๆ เป็นเว็ปขายID Game เเละ ขายรหัสต่างๆ
+
+## Authors
+
+- [@jirasak suktakua](https://www.facebook.com/COTKZA)
+
+
+## Demo
+
+เว็ปไซต์ ตัวอย่าง: ['']
+
+## Installation
+
+Install my-project with npm
+
+#1 create composer
+```bash
+  composer install
+```
+
+#2 npm install
+```bash
+  npm install
+```
+
+#3 npm build
+```bash
+  npm run build
+```
+
+#4 npm dev
+```bash
+  npm run dev
+```
+
+#4 edit .env
+```bash
+  .env
+```
+
+#5 server start
+```bash
+  php artisan serve
+```
+
+
+## Deployment
+
+To deploy this project run
+
+#1 deploy docker
+```bash
+  docker-composer up --build -d
+```
+
+#2 start docker
+```bash
+  docker-composer up
+```
+
+#3 end docker
+```bash
+  docker-composer down
+```
+
+
+## Tech Stack
+
+**Client:** Blade, daisyUI, TailwindCSS V4, Sweetalert2 , jQuery
+
+**Server:** Laravel
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at cotkgtasa123@gmail.com
+
