@@ -82,27 +82,27 @@ Install my-project with npm
   composer install
 ```
 
-#2 Install Node.js dependencies
+### 2. Install Node.js dependencies
 ```bash
   npm install
 ```
 
-#3 Build frontend assets
+### 3. Build frontend assets
 ```bash
   npm run build
 ```
 
-#4 Start development server
+### 4. Start development server
 ```bash
   npm run dev
 ```
 
-#4 Configure environment file
+### 5. Configure environment file
 ```bash
   copy .env.example .env
 ```
 
-#5 Run Laravel server
+### 6. Run Laravel server
 ```bash
   php artisan serve
 ```
@@ -112,17 +112,17 @@ Install my-project with npm
 
 To deploy this project run
 
-#1 Build and start containers
+### 1. Build and start containers
 ```bash
   docker-composer up --build -d
 ```
 
-#2 Start containers (already built)
+### 2. Start containers (already built)
 ```bash
   docker-composer up
 ```
 
-#3 Stop containers
+### 3. Stop containers
 ```bash
   docker-composer down
 ```
