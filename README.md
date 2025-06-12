@@ -77,32 +77,32 @@ website: ['']
 
 Install my-project with npm
 
-#1 create composer
+### 1. Install PHP dependencies
 ```bash
   composer install
 ```
 
-#2 npm install
+#2 Install Node.js dependencies
 ```bash
   npm install
 ```
 
-#3 npm build
+#3 Build frontend assets
 ```bash
   npm run build
 ```
 
-#4 npm dev
+#4 Start development server
 ```bash
   npm run dev
 ```
 
-#4 edit .env
+#4 Configure environment file
 ```bash
-  .env
+  copy .env.example .env
 ```
 
-#5 server start
+#5 Run Laravel server
 ```bash
   php artisan serve
 ```
@@ -112,17 +112,17 @@ Install my-project with npm
 
 To deploy this project run
 
-#1 deploy docker
+#1 Build and start containers
 ```bash
   docker-composer up --build -d
 ```
 
-#2 start docker
+#2 Start containers (already built)
 ```bash
   docker-composer up
 ```
 
-#3 end docker
+#3 Stop containers
 ```bash
   docker-composer down
 ```
