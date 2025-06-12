@@ -40,7 +40,7 @@
                             <p class="text-[12px] text-white/40">หรือยังไม่เคยสมัครเลย?</p>
                             <a href="/register" class="text-[12px] text-green-500 ml-1 hover:underline">สร้างบัญชีผู้ใช้</a>
                         </div>
-                        <a href="" class="text-[12px] text-white/40 hover:underline">ลืมรหัสผ่าน?</a>
+                        <a href="/password/reset" class="text-[12px] text-white/40 hover:underline">ลืมรหัสผ่าน?</a>
                     </div>
                 </div>
             </div>
