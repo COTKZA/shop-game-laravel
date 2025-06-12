@@ -98,6 +98,7 @@ Install my-project with npm
 ```
 
 ### 5. Configure environment file
+Copy .env.example to .env and edit the necessary settings (e.g. DB credentials):
 ```bash
   copy .env.example .env
 ```
