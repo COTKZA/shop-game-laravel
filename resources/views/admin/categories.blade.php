@@ -2,50 +2,55 @@
 @section('content')
     <div class="container mx-auto">
         {{-- filtter --}}
-        <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg">
-            <h1 class="text-xl font-bold">Filtter</h1>
-        </div>
-        <div class="bg-gray-700   p-3 shadow-xl rounded-b-lg">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-                <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
-                    onclick="my_modal_1.showModal()">
-                    เพิ่ม
-                </button>
-
-                <form action="/admin/categories" method="get" class="flex gap-1">
-                    <input type="search" name="search" placeholder="ค้นหา" value="{{ request('search') }}"
-                        class="input-md input-neutral w-full bg-slate-400  border border-neutral-500 rounded-xl text-black font-bold p-2">
-                    <button type="submit" class="btn btn-primary text-white p-3">ค้นหา</button>
-                </form>
-
+        @if (Auth::user()->role == 'admin')
+            <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg">
+                <h1 class="text-xl font-bold">Filtter</h1>
             </div>
-        </div>
+            <div class="bg-gray-700   p-3 shadow-xl rounded-b-lg">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+
+                    <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
+                        onclick="my_modal_1.showModal()">
+                        เพิ่ม
+                    </button>
+
+                    <form action="/admin/categories" method="get" class="flex gap-1">
+                        <input type="search" name="search" placeholder="ค้นหา" value="{{ request('search') }}"
+                            class="input-md input-neutral w-full bg-slate-400  border border-neutral-500 rounded-xl text-black font-bold p-2">
+                        <button type="submit" class="btn btn-primary text-white p-3">ค้นหา</button>
+                    </form>
+
+                </div>
+            </div>
+        @endif
 
         <!-- info table -->
         <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg mt-10">
             <h1 class="text-xl font-bold">Categories Info</h1>
         </div>
         <div class="p-3 shadow-xl rounded-b-lg min-h-screen bg-gray-700 \">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-                @foreach ($category as $items)
-                    <div class="bg-gray-800 rounded-xl border border-gray-500 overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                        {{-- รูปภาพหมวดหมู่ --}}
-                        <div class="w-full h-40 bg-gray-700 flex items-center justify-center">
-                            @if ($items->image)
-                                <img src="data:image/*;base64,{{ $items->image }}" class="w-full h-full object-center"
-                                    alt="Category Image">
-                            @else
-                                <span class="text-gray-400 text-sm">ไม่มีรูป</span>
-                            @endif
-                        </div>
+            <div class="grid grid-cols-1
+            sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+            @foreach ($category as $items)
+                <div
+                    class="bg-gray-800 rounded-xl border border-gray-500 overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    {{-- รูปภาพหมวดหมู่ --}}
+                    <div class="w-full h-40 bg-gray-700 flex items-center justify-center">
+                        @if ($items->image)
+                            <img src="data:image/*;base64,{{ $items->image }}" class="w-full h-full object-center"
+                                alt="Category Image">
+                        @else
+                            <span class="text-gray-400 text-sm">ไม่มีรูป</span>
+                        @endif
+                    </div>
 
-                        {{-- ชื่อหมวดหมู่ --}}
-                        <div class="p-4 text-center">
-                            <h1 class="text-lg font-semibold text-white">{{ $items->name }}</h1>
-                        </div>
+                    {{-- ชื่อหมวดหมู่ --}}
+                    <div class="p-4 text-center">
+                        <h1 class="text-lg font-semibold text-white">{{ $items->name }}</h1>
+                    </div>
 
-                        {{-- ปุ่ม --}}
+                    {{-- ปุ่ม --}}
+                    @if (Auth::user()->role == 'admin')
                         <div class="grid grid-cols-2 gap-2 p-4 bg-gray-900">
                             <button
                                 class="bg-yellow-600 hover:bg-yellow-700 text-white text-sm py-1 px-2 rounded flex items-center justify-center"
@@ -58,10 +63,11 @@
                                 <i class="fa-solid fa-trash mr-1"></i> ลบ
                             </button>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endif
+                </div>
+            @endforeach
         </div>
+    </div>
 
     </div>
 

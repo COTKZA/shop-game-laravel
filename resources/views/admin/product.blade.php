@@ -2,27 +2,28 @@
 @section('content')
     <div class="container mx-auto ">
         {{-- filtter --}}
-        <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg">
-            <h1 class="text-xl font-bold">Filtter</h1>
-        </div>
-        <div class="bg-gray-700 p-3 shadow-xl rounded-b-lg">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-                <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
-                    onclick="my_modal_1.showModal()">
-                    เพิ่ม
-                </button>
-
-
-                <form action="/admin/product" method="get" class="flex gap-1">
-                    <input type="search" name="search" placeholder="ค้นหา" value="{{ request('search') }}"
-                        class="input-md input-neutral w-full bg-slate-400 border border-neutral-500 rounded-xl text-black font-bold p-2">
-                    <button type="submit" class="btn btn-primary text-white p-3">ค้นหา</button>
-                </form>
-
+        @if (Auth::user()->role == 'admin')
+            <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg">
+                <h1 class="text-xl font-bold">Filtter</h1>
             </div>
-        </div>
+            <div class="bg-gray-700 p-3 shadow-xl rounded-b-lg">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
+                    <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
+                        onclick="my_modal_1.showModal()">
+                        เพิ่ม
+                    </button>
+
+
+                    <form action="/admin/product" method="get" class="flex gap-1">
+                        <input type="search" name="search" placeholder="ค้นหา" value="{{ request('search') }}"
+                            class="input-md input-neutral w-full bg-slate-400 border border-neutral-500 rounded-xl text-black font-bold p-2">
+                        <button type="submit" class="btn btn-primary text-white p-3">ค้นหา</button>
+                    </form>
+
+                </div>
+            </div>
+        @endif
         <!-- info table -->
         <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg mt-10">
             <h1 class="text-xl font-bold">Product Info</h1>
@@ -30,7 +31,8 @@
         <div class="p-3 shadow-xl rounded-b-lg min-h-screen bg-gray-700">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 @foreach ($product as $items)
-                    <div class="bg-gray-800 rounded-lg border border-gray-500 shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                    <div
+                        class="bg-gray-800 rounded-lg border border-gray-500 shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
                         <div class="w-full h-48  flex items-center justify-center">
                             @if ($items->productimage->first())
                                 <img src="data:image/*;base64,{{ $items->productimage->first()->image }}"
@@ -65,26 +67,28 @@
                         </div>
 
                         {{-- ปุ่ม --}}
-                        <div class="grid grid-cols-2 gap-2 p-4">
-                            <a href="/admin/product/img/{{ $items->id }}"
-                                class="btn bg-blue-600 hover:bg-blue-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center">
-                                <i class="fa-solid fa-eye mr-1"></i>รูป
-                            </a>
-                            <a  href="/admin/product/product_details/{{ $items->id }}"
-                                class="btn bg-green-600 hover:bg--green-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center">
-                                <i class="fa-solid fa-plus mr-1"></i>เพิ่มรหัส
-                            </a>
-                            <button
-                                class="btn bg-yellow-600 hover:bg-yellow-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center"
-                                onclick="showEditModal({{ $items->id }}, '{{ $items->name }}', '{{ $items->description }}', '{{ $items->price }}', '{{ $items->category_id }}')">
-                                <i class="fa-solid fa-pen-to-square mr-1"></i>แก้ไข
-                            </button>
-                            <button
-                                class="btn bg-red-600 hover:bg-red-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center"
-                                onclick="showDeleteModal({{ $items->id }}, '{{ $items->name }}')">
-                                <i class="fa-solid fa-trash mr-1"></i>ลบ
-                            </button>
-                        </div>
+                        @if (Auth::user()->role == 'admin')
+                            <div class="grid grid-cols-2 gap-2 p-4">
+                                <a href="/admin/product/img/{{ $items->id }}"
+                                    class="btn bg-blue-600 hover:bg-blue-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center">
+                                    <i class="fa-solid fa-eye mr-1"></i>รูป
+                                </a>
+                                <a href="/admin/product/product_details/{{ $items->id }}"
+                                    class="btn bg-green-600 hover:bg--green-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center">
+                                    <i class="fa-solid fa-plus mr-1"></i>เพิ่มรหัส
+                                </a>
+                                <button
+                                    class="btn bg-yellow-600 hover:bg-yellow-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center"
+                                    onclick="showEditModal({{ $items->id }}, '{{ $items->name }}', '{{ $items->description }}', '{{ $items->price }}', '{{ $items->category_id }}')">
+                                    <i class="fa-solid fa-pen-to-square mr-1"></i>แก้ไข
+                                </button>
+                                <button
+                                    class="btn bg-red-600 hover:bg-red-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center"
+                                    onclick="showDeleteModal({{ $items->id }}, '{{ $items->name }}')">
+                                    <i class="fa-solid fa-trash mr-1"></i>ลบ
+                                </button>
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div>

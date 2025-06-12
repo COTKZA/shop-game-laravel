@@ -3,22 +3,24 @@
     <div class="container mx-auto min-h-screen">
         <div class="bg-gray-800 p-3 sm:p-4 md:p-6 rounded-xl shadow-lg">
             <!-- Date Filter Section -->
-            <div class="bg-gray-700 p-3 sm:p-4 mb-4 sm:mb-6 rounded-xl shadow-inner">
-                <form class="flex flex-col sm:flex-row items-start sm:items-center gap-3" method="GET"
-                    action="/admin/dashboard">
-                    <label class="text-gray-300 font-medium text-sm sm:text-base">เลือกวันที่:</label>
-                    <div class="flex flex-1 w-full sm:w-auto items-center gap-3">
-                        <input type="date" name="start_date" value="{{ request('start_date') }}"
-                            class="flex-1 border border-gray-600 bg-gray-800 text-white p-2 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm sm:text-base">
-                        <input type="date" name="end_date" value="{{ request('end_date') }}"
-                            class="flex-1 border border-gray-600 bg-gray-800 text-white p-2 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm sm:text-base">
-                        <button
-                            class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg transition-colors duration-200 text-sm sm:text-base whitespace-nowrap">
-                            <i class="fas fa-filter mr-1 sm:mr-2"></i>กรอง
-                        </button>
-                    </div>
-                </form>
-            </div>
+            @if (Auth::user()->role == 'admin')
+                <div class="bg-gray-700 p-3 sm:p-4 mb-4 sm:mb-6 rounded-xl shadow-inner">
+                    <form class="flex flex-col sm:flex-row items-start sm:items-center gap-3" method="GET"
+                        action="/admin/dashboard">
+                        <label class="text-gray-300 font-medium text-sm sm:text-base">เลือกวันที่:</label>
+                        <div class="flex flex-1 w-full sm:w-auto items-center gap-3">
+                            <input type="date" name="start_date" value="{{ request('start_date') }}"
+                                class="flex-1 border border-gray-600 bg-gray-800 text-white p-2 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm sm:text-base">
+                            <input type="date" name="end_date" value="{{ request('end_date') }}"
+                                class="flex-1 border border-gray-600 bg-gray-800 text-white p-2 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm sm:text-base">
+                            <button
+                                class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg transition-colors duration-200 text-sm sm:text-base whitespace-nowrap">
+                                <i class="fas fa-filter mr-1 sm:mr-2"></i>กรอง
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            @endif
 
             <!-- Stats Cards Grid -->
             <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">

@@ -1,20 +1,21 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container mx-auto">
-
-        <div class="bg-black w-full p-3 rounded-t-lg">
-            <h1 class="text-xl font-bold">Filtter</h1>
-        </div>
-        <div class="bg-gray-700   p-3 shadow-xl rounded-b-lg">
-            <div class="grid grid-cols-1 sm:grid-cols-ๅ gap-2">
-
-                <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
-                    onclick="openAddModal({{ $product->id }})">
-                    เพิ่ม
-                </button>
-
+        @if (Auth::user()->role == 'admin')
+            <div class="bg-black w-full p-3 rounded-t-lg">
+                <h1 class="text-xl font-bold">Filtter</h1>
             </div>
-        </div>
+            <div class="bg-gray-700   p-3 shadow-xl rounded-b-lg">
+                <div class="grid grid-cols-1 sm:grid-cols-ๅ gap-2">
+
+                    <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
+                        onclick="openAddModal({{ $product->id }})">
+                        เพิ่ม
+                    </button>
+
+                </div>
+            </div>
+        @endif
 
         <!-- info table -->
         <div class="bg-black w-full p-3 rounded-t-lg mt-10">
@@ -41,14 +42,16 @@
                                 <td class="{{ $items->is_sold == 'available' ? 'text-green-500' : 'text-red-500' }}">
                                     {{ $items->is_sold }}</td>
                                 <td>
-                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-                                        <button class="btn btn-warning text-white"
-                                            onclick="showEditModal({{ $items->id }}, '{{ $items->username }}', '{{ $items->email }}', '{{ $items->password }}', '{{ $items->is_sold }}')"><i
-                                                class="fa-solid fa-pen-to-square"></i>เเก้ไข</button>
-                                        <button class="btn btn-error text-white"
-                                            onclick="showDeleteModal({{ $items->id }}, '{{ $items->email }}')"><i
-                                                class="fa-solid fa-trash"></i>ลบ</button>
-                                    </div>
+                                    @if (Auth::user()->role == 'admin')
+                                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                                            <button class="btn btn-warning text-white"
+                                                onclick="showEditModal({{ $items->id }}, '{{ $items->username }}', '{{ $items->email }}', '{{ $items->password }}', '{{ $items->is_sold }}')"><i
+                                                    class="fa-solid fa-pen-to-square"></i>เเก้ไข</button>
+                                            <button class="btn btn-error text-white"
+                                                onclick="showDeleteModal({{ $items->id }}, '{{ $items->email }}')"><i
+                                                    class="fa-solid fa-trash"></i>ลบ</button>
+                                        </div>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -136,7 +139,8 @@
 
                 <div class="mb-2">
                     <label for="" class="text-gray-800 text-sm font-bold">เลือก</label>
-                    <select name="is_sold" id="is_soldMessageText" class="border border-gray-500 rounded-lg text-gray-800 w-full">
+                    <select name="is_sold" id="is_soldMessageText"
+                        class="border border-gray-500 rounded-lg text-gray-800 w-full">
                         <option value="available">available</option>
                         <option value="sold">sold</option>
                     </select>
@@ -210,7 +214,7 @@
             my_modal_1.showModal();
         }
         // fn edit
-        function showEditModal(id ,username ,email, password, is_sold) {
+        function showEditModal(id, username, email, password, is_sold) {
 
             document.getElementById('usernameMessageText').value = `${username}`;
             document.getElementById('emailMessageText').value = `${email}`;
@@ -222,7 +226,7 @@
         }
 
         // fn delete
-        function showDeleteModal(id ,email) {
+        function showDeleteModal(id, email) {
 
             document.getElementById('deleteMessageText').textContent = `${email}`;
             document.getElementById('deleteForm').action = '/delete_productdetails/' + id;

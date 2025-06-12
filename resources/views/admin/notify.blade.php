@@ -2,24 +2,26 @@
 @section('content')
     <div class="container mx-auto">
         {{-- filtter --}}
-        <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg">
-            <h1 class="text-xl font-bold">Filtter</h1>
-        </div>
-        <div class="bg-gray-700  p-3 shadow-xl rounded-b-lg">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
-                    onclick="my_modal_1.showModal()">
-                    เพิ่ม
-                </button>
-
-                <form action="/admin/notify" method="get" class="flex gap-1">
-                    <input type="search" name="search" placeholder="ค้นหา" value="{{ request('search') }}"
-                        class="input-md input-neutral w-full bg-slate-400 border border-neutral-500 rounded-xl text-black font-bold p-2">
-                    <button type="submit" class="btn btn-primary text-white p-3">ค้นหา</button>
-                </form>
-
+        @if (Auth::user()->role == 'admin')
+            <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg">
+                <h1 class="text-xl font-bold">Filtter</h1>
             </div>
-        </div>
+            <div class="bg-gray-700  p-3 shadow-xl rounded-b-lg">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
+                        onclick="my_modal_1.showModal()">
+                        เพิ่ม
+                    </button>
+
+                    <form action="/admin/notify" method="get" class="flex gap-1">
+                        <input type="search" name="search" placeholder="ค้นหา" value="{{ request('search') }}"
+                            class="input-md input-neutral w-full bg-slate-400 border border-neutral-500 rounded-xl text-black font-bold p-2">
+                        <button type="submit" class="btn btn-primary text-white p-3">ค้นหา</button>
+                    </form>
+
+                </div>
+            </div>
+        @endif
 
         <!-- info table -->
         <div class="bg-gradient-to-br from-gray-700 to-gray-800 w-full p-3 rounded-t-lg mt-10">
@@ -41,14 +43,16 @@
                                 <th>{{ $items->id }}</th>
                                 <td>{{ $items->message }}</td>
                                 <td>
-                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-                                        <button class="btn btn-warning text-white"
-                                            onclick="showEditModal({{ $items->id }}, '{{ $items->message }}')"><i
-                                                class="fa-solid fa-pen-to-square"></i>เเก้ไข</button>
-                                        <button class="btn btn-error text-white"
-                                            onclick="showDeleteModal({{ $items->id }}, '{{ $items->message }}')"><i
-                                                class="fa-solid fa-trash"></i>ลบ</button>
-                                    </div>
+                                    @if (Auth::user()->role == 'admin')
+                                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                                            <button class="btn btn-warning text-white"
+                                                onclick="showEditModal({{ $items->id }}, '{{ $items->message }}')"><i
+                                                    class="fa-solid fa-pen-to-square"></i>เเก้ไข</button>
+                                            <button class="btn btn-error text-white"
+                                                onclick="showDeleteModal({{ $items->id }}, '{{ $items->message }}')"><i
+                                                    class="fa-solid fa-trash"></i>ลบ</button>
+                                        </div>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

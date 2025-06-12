@@ -1,20 +1,21 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container mx-auto">
-
-        <div class="bg-black w-full p-3 rounded-t-lg">
-            <h1 class="text-xl font-bold">Filtter</h1>
-        </div>
-        <div class="bg-gray-700   p-3 shadow-xl rounded-b-lg">
-            <div class="grid grid-cols-1 sm:grid-cols-ๅ gap-2">
-
-                <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
-                    onclick="openAddModal({{ $product->id }})">
-                    เพิ่ม
-                </button>
-
+        @if (Auth::user()->role == 'admin')
+            <div class="bg-black w-full p-3 rounded-t-lg">
+                <h1 class="text-xl font-bold">Filtter</h1>
             </div>
-        </div>
+            <div class="bg-gray-700   p-3 shadow-xl rounded-b-lg">
+                <div class="grid grid-cols-1 sm:grid-cols-ๅ gap-2">
+
+                    <button class="w-full text-white text-lg bg-green-500 p-2 rounded-lg font-bold"
+                        onclick="openAddModal({{ $product->id }})">
+                        เพิ่ม
+                    </button>
+
+                </div>
+            </div>
+        @endif
 
         <!-- info table -->
         <div class="bg-black w-full p-3 rounded-t-lg mt-10">
@@ -35,18 +36,20 @@
                         </div>
 
                         {{-- ปุ่มแก้ไขและลบ --}}
-                        <div class="grid grid-cols-2 gap-2 mt-2  p-4">
-                            <button
-                                class="btn bg-yellow-600 hover:bg-yellow-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center"
-                                onclick="showEditModal({{ $items->id }})">
-                                <i class="fa-solid fa-pen-to-square mr-1"></i>แก้ไข
-                            </button>
-                            <button
-                                class="btn bg-red-600 hover:bg-red-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center"
-                                onclick="showDeleteModal({{ $items->id }})">
-                                <i class="fa-solid fa-trash mr-1"></i>ลบ
-                            </button>
-                        </div>
+                        @if (Auth::user()->role == 'admin')
+                            <div class="grid grid-cols-2 gap-2 mt-2  p-4">
+                                <button
+                                    class="btn bg-yellow-600 hover:bg-yellow-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center"
+                                    onclick="showEditModal({{ $items->id }})">
+                                    <i class="fa-solid fa-pen-to-square mr-1"></i>แก้ไข
+                                </button>
+                                <button
+                                    class="btn bg-red-600 hover:bg-red-700 text-white py-1 px-2 rounded-md text-sm flex items-center justify-center"
+                                    onclick="showDeleteModal({{ $items->id }})">
+                                    <i class="fa-solid fa-trash mr-1"></i>ลบ
+                                </button>
+                            </div>
+                        @endif
 
                     </div>
                 @endforeach
